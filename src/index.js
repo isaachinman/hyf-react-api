@@ -28,7 +28,7 @@ app.use(bodyParser.json({
 }))
 
 // Load API
-app.use('/api', api)
+app.use('/', api)
 
 // Load docs
 docsGenerator(app, mongoose)
