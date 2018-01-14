@@ -3,6 +3,7 @@
     "env"
   ],
   "plugins": [
+    ["transform-object-rest-spread"],
     [
       "module-resolver",
       {
