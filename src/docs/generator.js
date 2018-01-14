@@ -4,6 +4,10 @@ export default (_app, mongoose) => {
   // Load docs
   const app = {
     ..._app,
+
+    // Have to manually specify routes because the package above is terrible
+    // https://github.com/nabeel-ahmad/express-mongoose-docs/issues/9
+
     routes: {
       get: [
         { path: '/blog/comments', method: 'GET' },
@@ -14,6 +18,7 @@ export default (_app, mongoose) => {
         { path: '/todos/create', method: 'POST' },
       ],
     },
+
   }
   docs(app, mongoose)
 }
