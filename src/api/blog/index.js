@@ -12,10 +12,9 @@ const blogAPI = express.Router()
 
 blogAPI.get('/', (req, res) => {
   CommentModel.find({}, (error, docs) => {
-    logger.info('Error: ', JSON.stringify(error))
-    logger.info('Docs: ', JSON.stringify(docs))
+    if (error) logger.error(error)
+    res.json(docs || error)
   })
-  res.json({ message: 'Getting blog content.' })
 })
 
 export default blogAPI
