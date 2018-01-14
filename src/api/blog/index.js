@@ -27,7 +27,7 @@ blogAPI.get('/comments/:id', (req, res) => {
 })
 
 // Create new
-blogAPI.post('/comments/new', (req, res) => {
+blogAPI.post('/comments/create', (req, res) => {
   logger.info(req.body)
   CommentModel.create({ ...req.body }, (error) => {
     if (!error) {

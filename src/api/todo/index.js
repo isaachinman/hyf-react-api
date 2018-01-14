@@ -27,7 +27,7 @@ todoAPI.get('/:id', (req, res) => {
 })
 
 // Create new
-todoAPI.post('/new', (req, res) => {
+todoAPI.post('/create', (req, res) => {
   logger.info(req.body)
   TodoModel.create({ ...req.body }, (error) => {
     if (!error) {
