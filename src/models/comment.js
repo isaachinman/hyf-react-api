@@ -10,6 +10,7 @@ const CommentSchema = new Schema({
     },
   },
   date: { type: Date, default: Date.now },
+  isLiked: { type: Boolean, default: false },
   text: { type: String, min: 1, max: 500 },
 })
 
