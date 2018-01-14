@@ -21,6 +21,7 @@
     "nodemon": "^1.14.11"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "^3.0.0",
