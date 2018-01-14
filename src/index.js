@@ -3,6 +3,7 @@ import api from 'api'
 import bodyParser from 'body-parser'
 import config from 'config'
 import cors from 'cors'
+import docsGenerator from 'docs/generator'
 import express from 'express'
 import http from 'http'
 import logger from 'utils/logger'
@@ -28,6 +29,9 @@ app.use(bodyParser.json({
 
 // Load API
 app.use('/api', api)
+
+// Load docs
+docsGenerator(app, mongoose)
 
 // Start listening
 app.listen(config.port, () => {
