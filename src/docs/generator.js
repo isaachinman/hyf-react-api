@@ -13,9 +13,11 @@ export default (_app, mongoose) => {
         { path: '/blog/comments', method: 'GET' },
         { path: '/blog/comments/:commentId', method: 'GET' },
         { path: '/blog/comments/create', method: 'POST' },
+        { path: '/blog/comments/:commentId', method: 'PUT' },
         { path: '/todos', method: 'GET' },
         { path: '/todos/:todoId', method: 'GET' },
         { path: '/todos/create', method: 'POST' },
+        { path: '/todos/:todoId', method: 'PUT' },
       ],
     },
 

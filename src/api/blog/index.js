@@ -28,7 +28,6 @@ blogAPI.get('/comments/:id', (req, res) => {
 
 // Create new
 blogAPI.post('/comments/create', (req, res) => {
-  logger.info(req.body)
   CommentModel.create({ ...req.body }, (error) => {
     if (!error) {
       res.sendStatus(200)
@@ -36,6 +35,18 @@ blogAPI.post('/comments/create', (req, res) => {
       res.status(400).send({ error: error.message })
     }
   })
+})
+
+// Edit existing
+blogAPI.put('/comments/:id', (req, res) => {
+  CommentModel.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true },
+    (error, updatedDocument) => {
+      if (!error) {
+        res.status(200).send({ updatedDocument })
+      } else {
+        res.status(400).send({ error: error.message })
+      }
+    })
 })
 
 export default blogAPI

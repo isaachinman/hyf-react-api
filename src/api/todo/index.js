@@ -28,7 +28,6 @@ todoAPI.get('/:id', (req, res) => {
 
 // Create new
 todoAPI.post('/create', (req, res) => {
-  logger.info(req.body)
   TodoModel.create({ ...req.body }, (error) => {
     if (!error) {
       res.sendStatus(200)
@@ -36,6 +35,18 @@ todoAPI.post('/create', (req, res) => {
       res.status(400).send({ error: error.message })
     }
   })
+})
+
+// Edit existing
+todoAPI.put('/:id', (req, res) => {
+  TodoModel.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true },
+    (error, updatedDocument) => {
+      if (!error) {
+        res.status(200).send({ updatedDocument })
+      } else {
+        res.status(400).send({ error: error.message })
+      }
+    })
 })
 
 export default todoAPI
