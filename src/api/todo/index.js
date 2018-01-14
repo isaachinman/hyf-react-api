@@ -10,8 +10,17 @@ const TodoModel = mongoose.model('Todo')
 
 const todoAPI = express.Router()
 
+// Get all
 todoAPI.get('/', (req, res) => {
   TodoModel.find({}, (error, docs) => {
+    if (error) logger.error(error)
+    res.json(docs || error)
+  })
+})
+
+// Get individual
+todoAPI.get('/:id', (req, res) => {
+  TodoModel.findById(req.params.id, (error, docs) => {
     if (error) logger.error(error)
     res.json(docs || error)
   })

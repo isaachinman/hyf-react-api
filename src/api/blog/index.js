@@ -10,8 +10,17 @@ const CommentModel = mongoose.model('Comment')
 
 const blogAPI = express.Router()
 
-blogAPI.get('/', (req, res) => {
+// Get all
+blogAPI.get('/comments', (req, res) => {
   CommentModel.find({}, (error, docs) => {
+    if (error) logger.error(error)
+    res.json(docs || error)
+  })
+})
+
+// Get individual
+blogAPI.get('/comments/:id', (req, res) => {
+  CommentModel.findById(req.params.id, (error, docs) => {
     if (error) logger.error(error)
     res.json(docs || error)
   })

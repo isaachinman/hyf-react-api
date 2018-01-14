@@ -6,6 +6,6 @@ import todoEndpoints from 'api/todo'
 const api = express.Router()
 
 api.use('/blog', blogEndpoints)
-api.use('/todo', todoEndpoints)
+api.use('/todos', todoEndpoints)
 
 export default api
