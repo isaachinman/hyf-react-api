@@ -1,9 +1,16 @@
 {
+  "name": "hyf-react-api",
+  "version": "0.1.0",
+  "author": "Isaac Hinman | 2017",
+  "license": "MIT",
+  "repository": "https://github.com/isaachinman/hyf-react-api",
+  "main": "index.js",
   "engines": {
     "node": ">=9"
   },
   "scripts": {
-    "start": "babel-node ./src/index.js",
+    "start": "yarn build && node ./dist index.js",
+    "dev": "babel-node ./src/index.js",
     "lint": "eslint src",
     "build": "babel src --out-dir dist"
   },
