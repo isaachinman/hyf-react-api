@@ -26,4 +26,16 @@ todoAPI.get('/:id', (req, res) => {
   })
 })
 
+// Create new
+todoAPI.post('/new', (req, res) => {
+  logger.info(req.body)
+  TodoModel.create({ ...req.body }, (error) => {
+    if (!error) {
+      res.sendStatus(200)
+    } else {
+      res.status(400).send({ error: error.message })
+    }
+  })
+})
+
 export default todoAPI

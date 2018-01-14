@@ -26,4 +26,16 @@ blogAPI.get('/comments/:id', (req, res) => {
   })
 })
 
+// Create new
+blogAPI.post('/comments/new', (req, res) => {
+  logger.info(req.body)
+  CommentModel.create({ ...req.body }, (error) => {
+    if (!error) {
+      res.sendStatus(200)
+    } else {
+      res.status(400).send({ error: error.message })
+    }
+  })
+})
+
 export default blogAPI
