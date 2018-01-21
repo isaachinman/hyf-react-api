@@ -26,7 +26,7 @@ blogAPI.post('/comments/create', (req, res) => {
 })
 
 // Edit existing
-blogAPI.put('/comments/:id', (req, res) => {
+blogAPI.patch('/comments/:id', (req, res) => {
   CommentModel.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true },
     (error, docs) => apiResponder(error, docs, res))
 })

@@ -26,7 +26,7 @@ todoAPI.post('/create', (req, res) => {
 })
 
 // Edit existing
-todoAPI.put('/:id', (req, res) => {
+todoAPI.patch('/:id', (req, res) => {
   TodoModel.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true },
     (error, docs) => apiResponder(error, docs, res))
 })
