@@ -1,19 +1,19 @@
-import mongoose, { Schema } from 'mongoose'
+import { model, Schema } from 'mongoose'
 
 const TodoSchema = new Schema({
-  done: {
-    type: Boolean,
-    default: false,
-  },
   deadline: {
-    type: Date,
     required: true,
+    type: Date,
   },
   description: {
-    type: String,
-    min: 1,
     max: 500,
+    min: 1,
     required: true,
+    type: String,
+  },
+  done: {
+    default: false,
+    type: Boolean,
   },
 }, {
 
@@ -24,6 +24,6 @@ const TodoSchema = new Schema({
 
 TodoSchema.set('toJSON', { getters: true, virtuals: false })
 
-const TodoModel = mongoose.model('Todo', TodoSchema)
+const TodoModel = model('Todo', TodoSchema)
 
 export default new TodoModel()

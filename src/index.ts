@@ -1,23 +1,24 @@
-/* Entry point */
-import api from 'api'
-import bodyParser from 'body-parser'
-import config from 'config'
-import cors from 'cors'
-import docsGenerator from 'docs/generator'
-import express from 'express'
-import http from 'http'
-import logger from 'utils/logger'
-import mongoose from 'mongoose'
+import * as bodyParser from 'body-parser'
+
+import * as cors from 'cors'
+import * as express from 'express'
+import * as http from 'http'
+import * as mongoose from 'mongoose'
+
+// Local Modules
+import api from './api'
+import config from './config'
+import docsGenerator from './docs/generator'
+import logger from './utils/logger'
 
 // Connect to DB
-mongoose.Promise = Promise
+// mongoose.Promise = Promise
 mongoose.connection.openUri(config.dbURI)
   .then(() => logger.info('Mongoose is connected to MLAB database.'))
-  .catch(err => logger.info(err))
+  .catch((err) => logger.info(err))
 
 // Instantiate express
-const app = express()
-app.server = http.createServer(app)
+const app: express.Application = express()
 
 // CORS (unsafe)
 app.use(cors())

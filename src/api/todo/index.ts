@@ -1,12 +1,13 @@
-import apiResponder from 'utils/apiResponder'
-import express from 'express'
-import mongoose from 'mongoose'
+import * as express from 'express'
+import { model } from 'mongoose'
+
+import apiResponder from '../../utils/apiResponder'
 
 // Register todo model
-import 'models/todo'
+import '../../models/todo'
 
 // Instantiate todo model
-const TodoModel = mongoose.model('Todo')
+const TodoModel = model('Todo')
 
 const todoAPI = express.Router()
 

@@ -1,12 +1,13 @@
-import apiResponder from 'utils/apiResponder'
-import express from 'express'
-import mongoose from 'mongoose'
+import * as express from 'express'
+import { model } from 'mongoose'
+
+import apiResponder from '../../utils/apiResponder'
 
 // Register comment model
-import 'models/comment'
+import '../../models/comment'
 
 // Instantiate comment model
-const CommentModel = mongoose.model('Comment')
+const CommentModel = model('Comment')
 
 const blogAPI = express.Router()
 

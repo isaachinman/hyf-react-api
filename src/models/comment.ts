@@ -1,33 +1,33 @@
-import mongoose, { Schema } from 'mongoose'
+import { model, Schema } from 'mongoose'
 
 const CommentSchema = new Schema({
   author: {
-    firstName: {
-      type: String,
+    avatarURL: {
+      default: 'http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg',
+      max: 500,
       min: 1,
+      type: String,
+    },
+    firstName: {
       max: 50,
+      min: 1,
       required: true,
+      type: String,
     },
     lastName: {
-      type: String,
-      min: 1,
       max: 50,
-      required: true,
-    },
-    avatarURL: {
-      type: String,
       min: 1,
-      max: 500,
-      default: 'http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg',
+      required: true,
+      type: String,
     },
   },
   date: { type: Date, default: Date.now },
   isLiked: { type: Boolean, default: false },
   text: {
-    type: String,
-    min: 1,
     max: 50,
+    min: 1,
     required: true,
+    type: String,
   },
 }, {
 
@@ -38,6 +38,6 @@ const CommentSchema = new Schema({
 
 CommentSchema.set('toJSON', { getters: true, virtuals: false })
 
-const CommentModel = mongoose.model('Comment', CommentSchema)
+const CommentModel = model('Comment', CommentSchema)
 
 export default new CommentModel()

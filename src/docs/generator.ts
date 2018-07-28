@@ -1,9 +1,9 @@
-import docs from 'express-mongoose-docs'
+import docs = require('express-mongoose-docs')
 
-export default (_app, mongoose) => {
+export default (app, mongoose) => {
   // Load docs
-  const app = {
-    ..._app,
+  const modifiedApp = {
+    ...app,
 
     // Have to manually specify routes because the package above is terrible
     // https://github.com/nabeel-ahmad/express-mongoose-docs/issues/9
@@ -24,5 +24,5 @@ export default (_app, mongoose) => {
     },
 
   }
-  docs(app, mongoose)
+  docs(modifiedApp, mongoose)
 }
